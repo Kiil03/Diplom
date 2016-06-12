@@ -1,3 +1,9 @@
+# -*- coding: utf-8 -*-
+from __future__ import unicode_literals
+
+from django.db import models
+
+# Create your models here.
 from django.db import models
 
 class Faculty(models.Model):
@@ -48,7 +54,7 @@ class Subjects(models.Model):
     kafedra = models.ForeignKey(Kafedra)
     teacher = models.ForeignKey(Teachers)
     speciality = models.ForeignKey(Speciality)
-    name_subject = models.CharField(20)
+    name_subject = models.CharField(max_length=20)
 
 
 class Student_subject(models.Model):
@@ -66,16 +72,9 @@ class Tests(models.Model):
     test_time = models.IntegerField
     count_questions = models.SmallIntegerField
 
-
-class Testirovanie(models.Model):
-    id_testirovania = models.AutoField(primary_key=True)
-    test = models.ForeignKey(Tests)
-    stud_subj_relation = models.ForeignKey(Student_subject)
-    id_quest = models.ForeignKey(Questions)
-    stud_answer = models.CharField
-    rating = models.CharField
-
-
+class Answers(models.Model):
+    id_answer = models.AutoField(primary_key=True)
+    answer = models.CharField(max_length=50)
 
 class Questions(models.Model):
     id_question = models.AutoField(primary_key=True)
@@ -83,6 +82,11 @@ class Questions(models.Model):
     answer_code = models.ForeignKey(Answers)
 
 
-class Answers(models.Model):
-    id_answer = models.AutoField(primary_key=True)
-    answer = models.CharField
+class Testirovanie(models.Model):
+    id_testirovania = models.AutoField(primary_key=True)
+    test = models.ForeignKey(Tests)
+    stud_subj_relation = models.ForeignKey(Student_subject)
+    id_quest = models.ForeignKey(Questions)
+    stud_answer = models.CharField(max_length=50)
+    rating = models.CharField
+
