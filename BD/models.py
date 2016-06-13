@@ -1,15 +1,15 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-
 from django.db import models
-
 # Create your models here.
-from django.db import models
+
 
 class Faculty(models.Model):
     id_facultet = models.AutoField(primary_key=True)
-    name_faculty = models.CharField(max_length=50)
+    name_faculty = models.CharField(max_length=50,verbose_name=u"Факультет")
 
+    def __unicode__(self):
+        return self.name_faculty
 
 class Speciality(models.Model):
     id_speciality = models.AutoField(primary_key=True)
@@ -17,11 +17,15 @@ class Speciality(models.Model):
     code = models.CharField(max_length=15)
     name_speciality = models.CharField(max_length=50)
 
+    def __unicode__(self):
+        return self.name_speciality
 
 class Kafedra(models.Model):
     id_kafedra = models.AutoField(primary_key=True)
     name_kafedra = models.CharField(max_length=50)
 
+    def __unicode__(self):
+        return self.name_kafedra
 
 class Teachers(models.Model):
     id_teacher = models.AutoField(primary_key=True)

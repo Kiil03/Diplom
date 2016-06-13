@@ -7,6 +7,5 @@ admin.site.register(models.Speciality)
 admin.site.register(models.Student_subject)
 admin.site.register(models.Teachers)
 admin.site.register(models.Subjects)
-
-def __unicode__(self):
-    return self.name_faculty()
+admin.site.register(models.Group)
+admin.site.register(models.Kafedra)
